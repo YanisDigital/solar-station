@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="uk" data-lang="ua" data-scene="day">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<!-- GitHub Pages cannot send response headers, so the policy ships in markup.
+     Everything is same-origin: the only exceptions are the two data: URIs used
+     as CSS backgrounds and the one inline bootstrap script, allowed by hash
+     rather than 'unsafe-inline'. form-action 'none' is deliberate — the lead
+     form is a demo and must never submit anywhere, with or without scripting.
+     Note: frame-ancestors is ignored in a meta policy, and Pages cannot send
+     X-Frame-Options, so clickjacking cannot be blocked on this host. -->
+<meta http-equiv="Content-Security-Policy" content="
+  default-src 'self';
+  script-src 'self' 'sha256-/x7W7R75k8Roq0WaVRQX9blP4OufE5xbAdzklGxsgpw=';
+  style-src 'self';
+  img-src 'self' data:;
+  font-src 'self';
+  connect-src 'none';
+  form-action 'none';
+  base-uri 'none';
+  object-src 'none';
+  upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+
+<title data-i18n="meta.title">VOLTARIA — сонячні станції під ключ для приватних будинків у Київській області</title>
+<meta name="description" data-i18n-attr="content:meta.desc" content="Проєктування, монтаж та обслуговування автономних сонячних станцій для приватних будинків у передмісті Києва. Повна енергонезалежність за 14 днів. Гарантія 25 років.">
+<meta name="theme-color" content="#0B0E12">
+<link rel="canonical" href="https://yanisdigital.github.io/solar-station/">
+<link rel="alternate" hreflang="uk" href="https://yanisdigital.github.io/solar-station/">
+<link rel="alternate" hreflang="en" href="https://yanisdigital.github.io/solar-station/?lang=en">
+<link rel="alternate" hreflang="x-default" href="https://yanisdigital.github.io/solar-station/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="VOLTARIA">
+<meta property="og:locale" content="uk_UA" data-i18n-attr="content:meta.ogLocale">
+<meta property="og:url" content="https://yanisdigital.github.io/solar-station/">
+<meta property="og:title" data-i18n-attr="content:meta.ogTitle" content="VOLTARIA — світло, яке ніхто не вимкне">
+<meta property="og:description" data-i18n-attr="content:meta.desc" content="Автономні сонячні станції під ключ для приватних будинків у передмісті Києва.">
+<meta property="og:image" content="https://yanisdigital.github.io/solar-station/assets/img/og-cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" data-i18n-attr="content:meta.ogTitle" content="VOLTARIA — світло, яке ніхто не вимкне">
+<meta name="twitter:description" data-i18n-attr="content:meta.desc" content="Автономні сонячні станції під ключ для приватних будинків у передмісті Києва.">
+<meta name="twitter:image" content="https://yanisdigital.github.io/solar-station/assets/img/og-cover.jpg">
+
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="site.webmanifest">
+<!-- Fonts are self-hosted (assets/fonts/) — no request, and no visitor IP,
+     ever goes to Google. -->
+<link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<!-- Scroll reveals start hidden only when scripting can reveal them again.
+     Without JS the page renders fully, with every FAQ answer expanded. -->
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+<a class="skip-link" href="#main" data-i18n="a11y.skip">Перейти до основного вмісту</a>
+<div class="grain" aria-hidden="true"></div>
+
+<header class="site-head" id="siteHead">
+  <div class="shell site-head__in">
+    <a class="logo" href="#top" aria-label="VOLTARIA">
+      <svg class="logo__mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+        <path d="M17.8 2 6 18.2h7.4L12.6 30 26 13.2h-7.9L17.8 2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      </svg>
+      <span class="logo__text">VOLTARIA</span>
+    </a>
+
+    <nav class="nav" id="nav" data-i18n-attr="aria-label:a11y.nav" aria-label="Головна навігація">
+      <a href="#problem" data-i18n="nav.problem">Проблема</a>
+      <a href="#how" data-i18n="nav.how">Як це працює</a>
+      <a href="#packages" data-i18n="nav.packages">Пакети</a>
+      <a href="#calculator" data-i18n="nav.calc">Калькулятор</a>
+      <a href="#cases" data-i18n="nav.cases">Обʼєкти</a>
+      <a href="#faq" data-i18n="nav.faq">Питання</a>
+    </nav>
+
+    <div class="site-head__act">
+      <div class="lang" role="group" data-i18n-attr="aria-label:a11y.lang" aria-label="Мова сайту">
+        <button type="button" class="lang__btn is-on" data-lang-btn="ua" aria-pressed="true">UA</button>
+        <button type="button" class="lang__btn" data-lang-btn="en" aria-pressed="false">EN</button>
+      </div>
+      <a class="btn btn--sm" href="#lead" data-i18n="cta.head">Розрахувати</a>
+      <button type="button" class="burger" id="burger" aria-expanded="false" aria-controls="nav" data-i18n-attr="aria-label:a11y.menu" aria-label="Меню">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============ HERO — 4-LAYER PARALLAX ============ -->
+<section class="hero" id="top" aria-labelledby="heroTitle">
+  <!-- Clicking anywhere on the stage flips the scene as a convenience; the
+       accessible, keyboard-reachable and touch-friendly control is #sceneHint. -->
+  <div class="hero__stage" id="stage">
+
+    <!-- L1 · SKY -->
+    <div class="pl pl--sky" data-depth="0.10" aria-hidden="true">
+      <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <linearGradient id="gSkyDay" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#16324a"/><stop offset=".45" stop-color="#3d6a7d"/>
+            <stop offset=".78" stop-color="#c98a49"/><stop offset="1" stop-color="#f0b061"/>
+          </linearGradient>
+          <linearGradient id="gSkyNight" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#04060a"/><stop offset=".55" stop-color="#090f16"/>
+            <stop offset="1" stop-color="#121922"/>
+          </linearGradient>
+          <radialGradient id="gSun" cx=".5" cy=".5" r=".5">
+            <stop offset="0" stop-color="#FFE9B8" stop-opacity=".95"/>
+            <stop offset=".35" stop-color="#FFC46B" stop-opacity=".5"/>
+            <stop offset="1" stop-color="#F5A524" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <rect class="sky-day" width="1600" height="900" fill="url(#gSkyDay)"/>
+        <rect class="sky-night" width="1600" height="900" fill="url(#gSkyNight)"/>
+        <g class="stars" fill="#dfe9f5">
+          <circle cx="210" cy="140" r="1.6"/><circle cx="380" cy="96" r="1.1"/><circle cx="520" cy="210" r="1.4"/>
+          <circle cx="700" cy="120" r="1"/><circle cx="880" cy="190" r="1.7"/><circle cx="1010" cy="88" r="1.2"/>
+          <circle cx="1180" cy="168" r="1.5"/><circle cx="1330" cy="110" r="1"/><circle cx="1460" cy="232" r="1.6"/>
+          <circle cx="130" cy="300" r="1.1"/><circle cx="640" cy="330" r="1.3"/><circle cx="1240" cy="320" r="1.1"/>
+          <circle cx="920" cy="60" r="1.3"/><circle cx="300" cy="420" r="1"/>
+        </g>
+        <g class="sun">
+          <circle cx="1190" cy="470" r="300" fill="url(#gSun)"/>
+          <circle cx="1190" cy="470" r="62" fill="#FFE3A8"/>
+        </g>
+        <g class="clouds" fill="#ffffff" opacity=".12">
+          <ellipse cx="330" cy="250" rx="190" ry="34"/><ellipse cx="450" cy="232" rx="120" ry="26"/>
+          <ellipse cx="1120" cy="180" rx="230" ry="30"/><ellipse cx="980" cy="196" rx="130" ry="22"/>
+          <ellipse cx="760" cy="330" rx="260" ry="26" opacity=".7"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- L2 · VILLAGE + HOUSE -->
+    <div class="pl pl--mid" data-depth="0.30" aria-hidden="true">
+      <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <linearGradient id="gPanel" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#1b2a3a"/><stop offset=".5" stop-color="#2c4459"/><stop offset="1" stop-color="#162232"/>
+          </linearGradient>
+          <linearGradient id="gRidge" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#14212b" stop-opacity=".92"/><stop offset="1" stop-color="#0B0E12"/>
+          </linearGradient>
+        </defs>
+        <path d="M0 600 L180 548 L340 592 L520 530 L700 584 L900 536 L1120 590 L1330 544 L1600 596 L1600 900 L0 900Z" fill="url(#gRidge)" opacity=".85"/>
+
+        <!-- Village and house sit in the centre band so the scene survives
+             the horizontal crop that `slice` applies on narrow screens. -->
+        <g class="village">
+          <g class="vh"><path d="M100 640 L170 596 L240 640 L240 712 L100 712Z" fill="#0d1319"/><rect class="win" x="130" y="656" width="26" height="24"/><rect class="win" x="184" y="656" width="26" height="24"/></g>
+          <g class="vh"><path d="M340 662 L398 626 L456 662 L456 716 L340 716Z" fill="#0c1218"/><rect class="win" x="368" y="676" width="22" height="20"/><rect class="win" x="408" y="676" width="22" height="20"/></g>
+          <g class="vh"><path d="M560 648 L618 606 L676 648 L676 714 L560 714Z" fill="#0d1319"/><rect class="win" x="584" y="664" width="22" height="22"/><rect class="win" x="630" y="664" width="22" height="22"/></g>
+          <g class="vh"><path d="M1120 656 L1182 618 L1244 656 L1244 716 L1120 716Z" fill="#0c1218"/><rect class="win" x="1146" y="672" width="24" height="22"/><rect class="win" x="1194" y="672" width="24" height="22"/></g>
+          <g class="vh"><path d="M1400 668 L1456 634 L1512 668 L1512 718 L1400 718Z" fill="#0b1117"/><rect class="win" x="1424" y="684" width="22" height="20"/><rect class="win" x="1462" y="684" width="22" height="20"/></g>
+        </g>
+
+        <g class="house">
+          <ellipse class="glow-pool" cx="842" cy="756" rx="240" ry="34" fill="#F5A524"/>
+          <path d="M690 600 L810 512 L930 600 L930 742 L690 742Z" fill="#11181f"/>
+          <path d="M930 600 L1015 600 L1015 742 L930 742Z" fill="#0d141a"/>
+          <path d="M678 604 L810 500 L942 604 L922 618 L810 528 L698 618Z" fill="#1c262f"/>
+          <g class="panels">
+            <path d="M818 534 L918 612 L870 632 L786 556Z" fill="url(#gPanel)"/>
+            <path d="M802 534 L702 612 L750 632 L834 556Z" fill="url(#gPanel)"/>
+            <g stroke="#5e7d96" stroke-width="1.1" opacity=".55" fill="none">
+              <path d="M835 549 L908 606"/><path d="M852 564 L898 618"/>
+              <path d="M785 549 L712 606"/><path d="M768 564 L722 618"/>
+              <path d="M810 540 L810 626"/>
+            </g>
+            <path class="panel-shine" d="M818 534 L918 612 L870 632 L786 556Z" fill="#9fd8ff"/>
+          </g>
+          <rect class="win win--hero" x="718" y="630" width="42" height="52" rx="2"/>
+          <rect class="win win--hero" x="782" y="630" width="42" height="52" rx="2"/>
+          <rect class="win win--hero" x="846" y="630" width="42" height="52" rx="2"/>
+          <rect class="win win--hero" x="952" y="640" width="44" height="72" rx="2"/>
+          <rect x="810" y="700" width="34" height="42" fill="#0a1015"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- L3 · FOREGROUND -->
+    <div class="pl pl--fore" data-depth="0.62" aria-hidden="true">
+      <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <linearGradient id="gFore" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#090c10"/><stop offset="1" stop-color="#05070a"/>
+          </linearGradient>
+        </defs>
+        <g class="motes" fill="#FFD166">
+          <circle cx="240" cy="520" r="2.4"/><circle cx="430" cy="610" r="1.8"/><circle cx="620" cy="470" r="2.1"/>
+          <circle cx="1080" cy="560" r="2.6"/><circle cx="1260" cy="486" r="1.9"/><circle cx="1420" cy="620" r="2.2"/>
+          <circle cx="880" cy="430" r="1.6"/><circle cx="160" cy="660" r="2"/>
+        </g>
+        <path d="M0 770 q160 -46 330 -16 q180 32 360 -6 q200 -42 420 -4 q240 42 490 6 L1600 900 L0 900Z" fill="url(#gFore)"/>
+        <g class="blades" stroke="#0a1014" stroke-width="5" stroke-linecap="round" fill="none">
+          <path d="M70 900 q-14 -80 6 -124"/><path d="M118 900 q10 -70 -4 -110"/>
+          <path d="M1500 900 q16 -92 -6 -134"/><path d="M1556 900 q-12 -76 4 -116"/>
+          <path d="M300 900 q-8 -54 4 -82"/><path d="M1300 900 q10 -60 -4 -92"/>
+        </g>
+      </svg>
+      <div class="vignette"></div>
+    </div>
+
+    <!-- L4 · HEADLINE -->
+    <div class="pl pl--copy" data-depth="0.88">
+      <div class="shell hero__copy">
+        <p class="eyebrow" data-i18n="hero.eyebrow">Сонячні станції під ключ · Київська область</p>
+        <h1 class="hero__title" id="heroTitle">
+          <span class="ln" data-i18n="hero.t1">Світло,</span>
+          <span class="ln ln--hl" data-i18n="hero.t2">яке ніхто не вимкне</span>
+        </h1>
+        <p class="hero__sub" data-i18n="hero.sub">Проєктуємо, монтуємо й обслуговуємо автономні сонячні станції для приватних будинків у передмісті Києва. Чотирнадцять днів — і чужі графіки відключень вас більше не стосуються.</p>
+        <div class="hero__cta">
+          <a class="btn btn--lg" href="#calculator" data-i18n="hero.cta1">Розрахувати мою станцію</a>
+          <a class="btn btn--ghost btn--lg" href="#cases" data-i18n="hero.cta2">Подивитись обʼєкти</a>
+        </div>
+        <dl class="hero__stats">
+          <div><dt class="num" data-i18n="hero.s1v">12 400</dt><dd data-i18n="hero.s1l">кВт·год на рік</dd></div>
+          <div><dt class="num" data-i18n="hero.s2v">25</dt><dd data-i18n="hero.s2l">років гарантії на панелі</dd></div>
+          <div><dt class="num" data-i18n="hero.s3v">3</dt><dd data-i18n="hero.s3l">дні монтажу</dd></div>
+        </dl>
+      </div>
+    </div>
+
+    <button type="button" class="scene-hint" id="sceneHint" aria-pressed="false" data-i18n="hero.hintDay">Торкніться — у селищі згасне світло</button>
+    <div class="scene-badge" aria-hidden="true"><span class="dot"></span><span data-i18n="hero.badge">Ви — на власній станції</span></div>
+  </div>
+</section>
+
+<!-- ============ PROBLEM ============ -->
+<section class="sec sec--problem" id="problem" aria-labelledby="problemTitle">
+  <div class="shell">
+    <header class="sec__head reveal">
+      <p class="eyebrow" data-i18n="pain.eyebrow">Ціна темряви</p>
+      <h2 class="sec__title" id="problemTitle" data-i18n="pain.title">Скільки насправді коштує чужий графік відключень</h2>
+      <p class="sec__lead" data-i18n="pain.lead">Генератор — це не незалежність. Це оренда світла за найвищою ціною: пальне, шум, сервіс і черга на заправці щоразу, коли вимикають.</p>
+    </header>
+
+    <div class="pain-grid">
+      <article class="card card--pain reveal">
+        <p class="card__num num" data-count="1200" data-suffix="+">0</p>
+        <h3 class="card__t" data-i18n="pain.c1t">годин без світла за рік</h3>
+        <p class="card__d" data-i18n="pain.c1d">Це 50 повних діб. Холодильник, свердловина, котел, інтернет і робота з дому — усе зупиняється за чужим розкладом.</p>
+      </article>
+      <article class="card card--pain reveal">
+        <p class="card__num num" data-count="64" data-prefix="+" data-suffix="%">0</p>
+        <h3 class="card__t" data-i18n="pain.c2t">зростання тарифу за три роки</h3>
+        <p class="card__d" data-i18n="pain.c2d">Тариф переглядають, ваш будинок — ні. Кожен наступний кіловат із мережі коштує дорожче за попередній.</p>
+      </article>
+      <article class="card card--pain reveal">
+        <p class="card__num num" data-count="1850" data-prefix="€ ">0</p>
+        <h3 class="card__t" data-i18n="pain.c3t">генератор і пальне за сезон</h3>
+        <p class="card__d" data-i18n="pain.c3d">Гроші, які згоряють буквально. Та сама сума, вкладена в станцію, працює на вас наступні 25 років.</p>
+      </article>
+    </div>
+    <p class="note reveal" data-i18n="pain.note">Цифри ілюстративні та наведені для демонстрації кейсу.</p>
+  </div>
+</section>
+
+<!-- ============ HOW ============ -->
+<section class="sec sec--how" id="how" aria-labelledby="howTitle">
+  <div class="shell">
+    <header class="sec__head reveal">
+      <p class="eyebrow" data-i18n="how.eyebrow">Як це працює</p>
+      <h2 class="sec__title" id="howTitle" data-i18n="how.title">Від першого дзвінка до автономії — чотирнадцять днів</h2>
+    </header>
+
+    <ol class="steps">
+      <li class="step reveal">
+        <span class="step__n">01</span>
+        <h3 class="step__t" data-i18n="how.s1t">Аудит будинку</h3>
+        <p class="step__d" data-i18n="how.s1d">Виїзд інженера, заміри даху й нахилу, аналіз рахунків за 12 місяців. Ви отримуєте чесну відповідь, скільки кВт вам справді потрібно.</p>
+        <span class="step__meta">1 <span data-i18n="how.day">день</span></span>
+      </li>
+      <li class="step reveal">
+        <span class="step__n">02</span>
+        <h3 class="step__t" data-i18n="how.s2t">Проєкт і кошторис</h3>
+        <p class="step__d" data-i18n="how.s2d">3D-схема розміщення панелей, розрахунок генерації по місяцях, специфікація до останнього конектора. Ціна фіксується договором.</p>
+        <span class="step__meta">4 <span data-i18n="how.days">дні</span></span>
+      </li>
+      <li class="step reveal">
+        <span class="step__n">03</span>
+        <h3 class="step__t" data-i18n="how.s3t">Монтаж</h3>
+        <p class="step__d" data-i18n="how.s3d">Своя бригада, без субпідряду. Кріплення без пошкодження покрівлі, інвертор і накопичувач у технічному приміщенні, прихована кабельна траса.</p>
+        <span class="step__meta">3 <span data-i18n="how.days">дні</span></span>
+      </li>
+      <li class="step reveal">
+        <span class="step__n">04</span>
+        <h3 class="step__t" data-i18n="how.s4t">Запуск і моніторинг</h3>
+        <p class="step__d" data-i18n="how.s4d">Пусконалагодження, документи, застосунок з генерацією в реальному часі. Сервіс і дистанційна діагностика — на весь строк гарантії.</p>
+        <span class="step__meta">1 <span data-i18n="how.day">день</span></span>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ PACKAGES ============ -->
+<section class="sec sec--pack" id="packages" aria-labelledby="packTitle">
+  <div class="shell">
+    <header class="sec__head reveal">
+      <p class="eyebrow" data-i18n="pack.eyebrow">Пакети</p>
+      <h2 class="sec__title" id="packTitle" data-i18n="pack.title">Три рівні незалежності</h2>
+      <p class="sec__lead" data-i18n="pack.lead">Усі комплекти — з накопичувачем. Станція без батареї гасне разом із мережею, а це не те, за чим ви прийшли.</p>
+    </header>
+
+    <div class="pack-grid">
+      <article class="pack reveal">
+        <h3 class="pack__name" data-i18n="pack.p1n">Старт</h3>
+        <p class="pack__pw num">5 <span data-i18n="pack.kw">кВт</span></p>
+        <p class="pack__price num">€ 6 400</p>
+        <p class="pack__for" data-i18n="pack.p1f">Будинок до 120 м², базові потреби</p>
+        <ul class="pack__list">
+          <li data-i18n="pack.p1a">12 панелей N-type, 460 Вт</li>
+          <li data-i18n="pack.p1b">Гібридний інвертор 5 кВт</li>
+          <li data-i18n="pack.p1c">Накопичувач LiFePO₄ 5 кВт·год</li>
+          <li data-i18n="pack.p1d">Світло, вода, холодильник, інтернет</li>
+          <li data-i18n="pack.p1e">Автономія до 8 годин</li>
+        </ul>
+        <a class="btn btn--ghost btn--full" href="#lead" data-i18n="pack.cta">Обрати пакет</a>
+      </article>
+
+      <article class="pack pack--hi reveal">
+        <span class="pack__tag" data-i18n="pack.best">Обирають найчастіше</span>
+        <h3 class="pack__name" data-i18n="pack.p2n">Оптимум</h3>
+        <p class="pack__pw num">10 <span data-i18n="pack.kw">кВт</span></p>
+        <p class="pack__price num">€ 11 900</p>
+        <p class="pack__for" data-i18n="pack.p2f">Будинок 120–250 м², родина з дітьми</p>
+        <ul class="pack__list">
+          <li data-i18n="pack.p2a">22 панелі N-type, 460 Вт</li>
+          <li data-i18n="pack.p2b">Гібридний інвертор 10 кВт</li>
+          <li data-i18n="pack.p2c">Накопичувач LiFePO₄ 15 кВт·год</li>
+          <li data-i18n="pack.p2d">Тепловий насос і свердловина в резерві</li>
+          <li data-i18n="pack.p2e">Автономія до 20 годин</li>
+        </ul>
+        <a class="btn btn--full" href="#lead" data-i18n="pack.cta">Обрати пакет</a>
+      </article>
+
+      <article class="pack reveal">
+        <h3 class="pack__name" data-i18n="pack.p3n">Автономія</h3>
+        <p class="pack__pw num">15+ <span data-i18n="pack.kw">кВт</span></p>
+        <p class="pack__price num">€ 18 500</p>
+        <p class="pack__for" data-i18n="pack.p3f">Будинок від 250 м², повна незалежність</p>
+        <ul class="pack__list">
+          <li data-i18n="pack.p3a">34 панелі N-type, 460 Вт</li>
+          <li data-i18n="pack.p3b">Два інвертори, трифазна мережа</li>
+          <li data-i18n="pack.p3c">Накопичувач LiFePO₄ 30 кВт·год</li>
+          <li data-i18n="pack.p3d">Басейн, клімат, зарядка електромобіля</li>
+          <li data-i18n="pack.p3e">Автономія до 3 діб</li>
+        </ul>
+        <a class="btn btn--ghost btn--full" href="#lead" data-i18n="pack.cta">Обрати пакет</a>
+      </article>
+    </div>
+    <p class="note reveal" data-i18n="pack.note">Ціни демонстраційні: це портфоліо-кейс, а не комерційна пропозиція.</p>
+  </div>
+</section>
+
+<!-- ============ CALCULATOR ============ -->
+<section class="sec sec--calc" id="calculator" aria-labelledby="calcTitle">
+  <div class="shell calc">
+    <header class="sec__head sec__head--left reveal">
+      <p class="eyebrow" data-i18n="calc.eyebrow">Калькулятор</p>
+      <h2 class="sec__title" id="calcTitle" data-i18n="calc.title">Порахуйте, коли станція себе окупить</h2>
+      <p class="sec__lead" data-i18n="calc.lead">Пересуньте два повзунки — решту зробить арифметика. Без форми, без телефону, без менеджера.</p>
+    </header>
+
+    <div class="calc__box reveal">
+      <div class="calc__controls">
+        <div class="field">
+          <label class="field__lab" for="bill">
+            <span data-i18n="calc.billLab">Рахунок за електрику на місяць</span>
+            <output class="field__out num" id="billOut" for="bill">₴ 3 200</output>
+          </label>
+          <input type="range" id="bill" min="800" max="12000" step="100" value="3200"
+                 data-i18n-attr="aria-label:calc.billLab" aria-label="Рахунок за електрику на місяць">
+          <div class="field__scale"><span>₴ 800</span><span>₴ 12 000</span></div>
+        </div>
+
+        <div class="field">
+          <label class="field__lab" for="roof">
+            <span data-i18n="calc.roofLab">Вільна площа даху</span>
+            <output class="field__out num" id="roofOut" for="roof">45 м²</output>
+          </label>
+          <input type="range" id="roof" min="15" max="140" step="1" value="45"
+                 data-i18n-attr="aria-label:calc.roofLab" aria-label="Вільна площа даху">
+          <div class="field__scale"><span>15 м²</span><span>140 м²</span></div>
+        </div>
+      </div>
+
+      <div class="calc__out" aria-live="polite">
+        <div class="ro">
+          <p class="ro__lab" data-i18n="calc.rPower">Рекомендована потужність</p>
+          <p class="ro__val num" id="rPower">8,2 кВт</p>
+        </div>
+        <div class="ro">
+          <p class="ro__lab" data-i18n="calc.rSave">Економія за рік</p>
+          <p class="ro__val ro__val--hl num" id="rSave">₴ 38 400</p>
+        </div>
+        <div class="ro">
+          <p class="ro__lab" data-i18n="calc.rCost">Орієнтовна вартість</p>
+          <p class="ro__val num" id="rCost">€ 9 800</p>
+        </div>
+        <div class="ro">
+          <p class="ro__lab" data-i18n="calc.rBack">Окупність</p>
+          <p class="ro__val num" id="rBack">6,4 року</p>
+        </div>
+        <a class="btn btn--full" href="#lead" data-i18n="calc.cta">Отримати точний розрахунок</a>
+        <p class="note note--tight" data-i18n="calc.note">Оцінка за середньою інсоляцією Київської області. Точні цифри — після аудиту.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CASES ============ -->
+<section class="sec sec--cases" id="cases" aria-labelledby="casesTitle">
+  <div class="shell">
+    <header class="sec__head reveal">
+      <p class="eyebrow" data-i18n="cases.eyebrow">Обʼєкти</p>
+      <h2 class="sec__title" id="casesTitle" data-i18n="cases.title">Передмістя, яке вже не помічає відключень</h2>
+    </header>
+
+    <div class="cases">
+      <figure class="case case--wide reveal">
+        <img src="assets/img/cases/case-1.webp" alt="" data-i18n-attr="alt:cases.c1a" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption><span class="case__pl" data-i18n="cases.c1p">Козин</span><span class="case__pw num">14,2 кВт</span></figcaption>
+      </figure>
+      <figure class="case reveal">
+        <img src="assets/img/cases/case-2.webp" alt="" data-i18n-attr="alt:cases.c2a" width="900" height="900" loading="lazy" decoding="async">
+        <figcaption><span class="case__pl" data-i18n="cases.c2p">Ірпінь</span><span class="case__pw num">8,0 кВт</span></figcaption>
+      </figure>
+      <figure class="case reveal">
+        <img src="assets/img/cases/case-3.webp" alt="" data-i18n-attr="alt:cases.c3a" width="900" height="900" loading="lazy" decoding="async">
+        <figcaption><span class="case__pl" data-i18n="cases.c3p">Буча</span><span class="case__pw num">10,4 кВт</span></figcaption>
+      </figure>
+      <figure class="case reveal">
+        <img src="assets/img/cases/case-4.webp" alt="" data-i18n-attr="alt:cases.c4a" width="900" height="900" loading="lazy" decoding="async">
+        <figcaption><span class="case__pl" data-i18n="cases.c4p">Вишгород</span><span class="case__pw num">6,4 кВт</span></figcaption>
+      </figure>
+      <figure class="case case--wide reveal">
+        <img src="assets/img/cases/case-5.webp" alt="" data-i18n-attr="alt:cases.c5a" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption><span class="case__pl" data-i18n="cases.c5p">Обухів</span><span class="case__pw num">18,6 кВт</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section class="sec sec--rev" id="reviews" aria-labelledby="revTitle">
+  <div class="shell">
+    <header class="sec__head reveal">
+      <p class="eyebrow" data-i18n="rev.eyebrow">Відгуки</p>
+      <h2 class="sec__title" id="revTitle" data-i18n="rev.title">Що кажуть господарі</h2>
+      <p class="note note--warn" data-i18n="rev.note">Відгуки вигадані для демонстрації портфоліо-кейсу.</p>
+    </header>
+
+    <div class="slider" id="slider">
+      <div class="slider__track" id="track" aria-live="polite">
+
+        <article class="rv">
+          <div class="rv__stars" role="img" data-i18n-attr="aria-label:rev.rate5" aria-label="Оцінка 5 з 5">★★★★★</div>
+          <blockquote class="rv__q" data-i18n="rev.q1">Три зими на генераторі — і я досі памʼятаю той запах. Тепер про відключення дізнаюся з новин, а не з холодильника. Монтаж зайняв три дні, покрівлю не зачепили.</blockquote>
+          <footer class="rv__a">
+            <div class="rv__ava" aria-hidden="true"><span data-i18n="rev.i1">XX</span></div>
+            <div><p class="rv__n" data-i18n="rev.n1">Андрій Ковальчук</p><p class="rv__p" data-i18n="rev.p1">Ірпінь · 10 кВт · листопад 2024</p></div>
+          </footer>
+        </article>
+
+        <article class="rv">
+          <div class="rv__stars" role="img" data-i18n-attr="aria-label:rev.rate5" aria-label="Оцінка 5 з 5">★★★★★</div>
+          <blockquote class="rv__q" data-i18n="rev.q2">Порівнювала чотири компанії. Тут єдині показали розрахунок генерації по місяцях, включно з грудневим провалом, і не обіцяли казку. Саме через цю чесність і обрала.</blockquote>
+          <footer class="rv__a">
+            <div class="rv__ava" aria-hidden="true"><span data-i18n="rev.i2">XX</span></div>
+            <div><p class="rv__n" data-i18n="rev.n2">Олена Демченко</p><p class="rv__p" data-i18n="rev.p2">Буча · 8 кВт · березень 2025</p></div>
+          </footer>
+        </article>
+
+        <article class="rv">
+          <div class="rv__stars" role="img" data-i18n-attr="aria-label:rev.rate5" aria-label="Оцінка 5 з 5">★★★★★</div>
+          <blockquote class="rv__q" data-i18n="rev.q3">Працюю з дому, зриви дзвінків коштували мені клієнтів. Після запуску станції жодного разу не перепросив за «у нас світло вимкнули». Окупність рахую не грошима, а репутацією.</blockquote>
+          <footer class="rv__a">
+            <div class="rv__ava" aria-hidden="true"><span data-i18n="rev.i3">XX</span></div>
+            <div><p class="rv__n" data-i18n="rev.n3">Тарас Мельник</p><p class="rv__p" data-i18n="rev.p3">Вишгород · 6,4 кВт · липень 2024</p></div>
+          </footer>
+        </article>
+
+        <article class="rv">
+          <div class="rv__stars" role="img" data-i18n-attr="aria-label:rev.rate4" aria-label="Оцінка 4 з 5">★★★★☆</div>
+          <blockquote class="rv__q" data-i18n="rev.q4">Затримали старт на тиждень через постачання інвертора — чесно попередили заздалегідь і зробили знижку. Сама станція працює бездоганно вже другий сезон.</blockquote>
+          <footer class="rv__a">
+            <div class="rv__ava" aria-hidden="true"><span data-i18n="rev.i4">XX</span></div>
+            <div><p class="rv__n" data-i18n="rev.n4">Ірина Соколова</p><p class="rv__p" data-i18n="rev.p4">Обухів · 15 кВт · вересень 2024</p></div>
+          </footer>
+        </article>
+
+        <article class="rv">
+          <div class="rv__stars" role="img" data-i18n-attr="aria-label:rev.rate5" aria-label="Оцінка 5 з 5">★★★★★</div>
+          <blockquote class="rv__q" data-i18n="rev.q5">Найкраще — застосунок. Видно кожен кіловат: скільки згенерували, скільки в батареї, скільди віддали. Діти влаштували змагання, хто менше витратить.</blockquote>
+          <footer class="rv__a">
+            <div class="rv__ava" aria-hidden="true"><span data-i18n="rev.i5">XX</span></div>
+            <div><p class="rv__n" data-i18n="rev.n5">Сергій Бондаренко</p><p class="rv__p" data-i18n="rev.p5">Козин · 14,2 кВт · травень 2025</p></div>
+          </footer>
+        </article>
+
+      </div>
+
+      <div class="slider__ui">
+        <button type="button" class="sarr" id="prev" data-i18n-attr="aria-label:a11y.prev" aria-label="Попередній відгук">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="dots" id="dots" role="tablist" data-i18n-attr="aria-label:a11y.dots" aria-label="Перемикання відгуків"></div>
+        <button type="button" class="sarr" id="next" data-i18n-attr="aria-label:a11y.next" aria-label="Наступний відгук">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="sec sec--faq" id="faq" aria-labelledby="faqTitle">
+  <div class="shell faq">
+    <header class="sec__head sec__head--left reveal">
+      <p class="eyebrow" data-i18n="faq.eyebrow">Питання</p>
+      <h2 class="sec__title" id="faqTitle" data-i18n="faq.title">Те, про що питають на першій зустрічі</h2>
+    </header>
+
+    <div class="acc reveal">
+      <div class="acc__i">
+        <h3><button type="button" class="acc__q" aria-expanded="false" aria-controls="a1" id="q1"><span data-i18n="faq.q1">А якщо тиждень стоїть хмарна погода?</span><span class="acc__ic" aria-hidden="true"></span></button></h3>
+        <div class="acc__a" id="a1" role="region" aria-labelledby="q1"><p data-i18n="faq.a1">Панелі працюють і в хмарну погоду — просто віддають менше, приблизно 15–25 % від пікової потужності. Саме для таких днів у кожному нашому комплекті є накопичувач: він вирівнює провали й тримає будинок на плаву, поки генерація низька.</p></div>
+      </div>
+      <div class="acc__i">
+        <h3><button type="button" class="acc__q" aria-expanded="false" aria-controls="a2" id="q2"><span data-i18n="faq.q2">Що відбувається взимку та під снігом?</span><span class="acc__ic" aria-hidden="true"></span></button></h3>
+        <div class="acc__a" id="a2" role="region" aria-labelledby="q2"><p data-i18n="faq.a2">Грудень і січень дають близько 25–30 % від літньої генерації — це закладено в розрахунок від початку. Панелі ставимо під кутом 30–35°, тому сухий сніг сходить сам, а скло під ним не пошкоджується.</p></div>
+      </div>
+      <div class="acc__i">
+        <h3><button type="button" class="acc__q" aria-expanded="false" aria-controls="a3" id="q3"><span data-i18n="faq.q3">За скільки станція окупиться?</span><span class="acc__ic" aria-hidden="true"></span></button></h3>
+        <div class="acc__a" id="a3" role="region" aria-labelledby="q3"><p data-i18n="faq.a3">За поточних тарифів — від 8 до 12 років, залежно від споживання: комплект із накопичувачем коштує дорожче, ніж звичайна мережева система. Але порівнювати варто не з нулем, а з витратами на генератор і пальне — у цьому порівнянні станція виходить у плюс значно раніше.</p></div>
+      </div>
+      <div class="acc__i">
+        <h3><button type="button" class="acc__q" aria-expanded="false" aria-controls="a4" id="q4"><span data-i18n="faq.q4">Чи можна продавати надлишок у мережу?</span><span class="acc__ic" aria-hidden="true"></span></button></h3>
+        <div class="acc__a" id="a4" role="region" aria-labelledby="q4"><p data-i18n="faq.a4">Так, гібридний інвертор це дозволяє, і ми готуємо документи для підключення. Але ми ніколи не будуємо економіку проєкту на цьому: пріоритет — спершу ваш будинок і батарея, надлишок — уже потім.</p></div>
+      </div>
+      <div class="acc__i">
+        <h3><button type="button" class="acc__q" aria-expanded="false" aria-controls="a5" id="q5"><span data-i18n="faq.q5">Станція працює, коли мережа знеструмлена?</span><span class="acc__ic" aria-hidden="true"></span></button></h3>
+        <div class="acc__a" id="a5" role="region" aria-labelledby="q5"><p data-i18n="faq.a5">Так — і це головна відмінність від звичайної мережевої системи. Гібридний інвертор з накопичувачем переходить в автономний режим за 20 мілісекунд: комп'ютер не перезавантажується, котел не збивається, ви навіть не помічаєте переходу.</p></div>
+      </div>
+      <div class="acc__i">
+        <h3><button type="button" class="acc__q" aria-expanded="false" aria-controls="a6" id="q6"><span data-i18n="faq.q6">Яке обслуговування потрібне?</span><span class="acc__ic" aria-hidden="true"></span></button></h3>
+        <div class="acc__a" id="a6" role="region" aria-labelledby="q6"><p data-i18n="faq.a6">Мийка панелей раз на рік і щорічна перевірка кріплень та зʼєднань. Стан системи ми бачимо дистанційно через моніторинг, тож про більшість проблем дізнаємося раніше за вас і приїжджаємо самі.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LEAD ============ -->
+<section class="sec sec--lead" id="lead" aria-labelledby="leadTitle">
+  <div class="shell lead">
+    <div class="lead__copy reveal">
+      <p class="eyebrow" data-i18n="form.eyebrow">Заявка</p>
+      <h2 class="sec__title" id="leadTitle" data-i18n="form.title">Почнімо з безкоштовного аудиту</h2>
+      <p class="sec__lead" data-i18n="form.lead">Інженер приїде, зробить заміри й покаже розрахунок. Якщо станція вам не вигідна — ми чесно про це скажемо. Це теж результат.</p>
+      <ul class="lead__pts">
+        <li data-i18n="form.b1">Виїзд і розрахунок — безкоштовно</li>
+        <li data-i18n="form.b2">Фіксована ціна в договорі</li>
+        <li data-i18n="form.b3">Своя бригада, без субпідряду</li>
+      </ul>
+    </div>
+
+    <!-- Inputs carry no name= on purpose: if scripting is blocked, a submit
+         must not put a phone number into the URL, history and Referer. -->
+    <form class="lead__form reveal" id="leadForm" novalidate>
+      <div class="inp">
+        <label for="fname" data-i18n="form.name">Імʼя</label>
+        <input type="text" id="fname" required autocomplete="name" data-i18n-attr="placeholder:form.namePh" placeholder="Як до вас звертатись">
+        <p class="err" data-err="fname" data-i18n="form.eName">Вкажіть, будь ласка, імʼя</p>
+      </div>
+      <div class="inp">
+        <label for="fphone" data-i18n="form.phone">Телефон</label>
+        <input type="tel" id="fphone" required autocomplete="tel" inputmode="tel" placeholder="+380 __ ___ __ __">
+        <p class="err" data-err="fphone" data-i18n="form.ePhone">Потрібен номер у форматі +380…</p>
+      </div>
+      <div class="inp">
+        <label for="fplace" data-i18n="form.place">Населений пункт</label>
+        <input type="text" id="fplace" data-i18n-attr="placeholder:form.placePh" placeholder="Ірпінь, Буча, Козин…">
+      </div>
+      <div class="inp">
+        <label for="ftype" data-i18n="form.type">Тип обʼєкта</label>
+        <select id="ftype">
+          <option value="new" data-i18n="form.t1">Будинок у процесі будівництва</option>
+          <option value="live" selected data-i18n="form.t2">Житловий будинок</option>
+          <option value="gen" data-i18n="form.t3">Є генератор, хочу замінити</option>
+          <option value="ext" data-i18n="form.t4">Є станція, потрібне розширення</option>
+        </select>
+      </div>
+      <button class="btn btn--lg btn--full" type="submit" data-i18n="form.submit">Замовити аудит</button>
+      <p class="note note--tight" data-i18n="form.consent">Натискаючи кнопку, ви погоджуєтесь на обробку даних. Це демонстраційна форма — нічого нікуди не надсилається.</p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="shell foot__in">
+    <div class="foot__brand">
+      <a class="logo" href="#top" aria-label="VOLTARIA">
+        <svg class="logo__mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path d="M17.8 2 6 18.2h7.4L12.6 30 26 13.2h-7.9L17.8 2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+        </svg>
+        <span class="logo__text">VOLTARIA</span>
+      </a>
+      <p class="foot__slogan" data-i18n="foot.slogan">Ваш дім — ваша станція.</p>
+    </div>
+
+    <nav class="foot__col" data-i18n-attr="aria-label:foot.navLab" aria-label="Розділи сайту">
+      <h2 class="foot__h" data-i18n="foot.h1">Розділи</h2>
+      <a href="#problem" data-i18n="nav.problem">Проблема</a>
+      <a href="#packages" data-i18n="nav.packages">Пакети</a>
+      <a href="#calculator" data-i18n="nav.calc">Калькулятор</a>
+      <a href="#cases" data-i18n="nav.cases">Обʼєкти</a>
+      <a href="#faq" data-i18n="nav.faq">Питання</a>
+    </nav>
+
+    <div class="foot__col">
+      <h2 class="foot__h" data-i18n="foot.h2">Контакти</h2>
+      <a href="tel:+380440000000" class="num">+380 44 000 00 00</a>
+      <a href="mailto:hello@voltaria.example">hello@voltaria.example</a>
+      <address data-i18n="foot.addr">Київська обл., Ірпінь, вул. Прикладна, 1</address>
+      <p class="foot__hours" data-i18n="foot.hours">Пн–Сб, 09:00–19:00</p>
+    </div>
+
+    <div class="foot__col">
+      <h2 class="foot__h" data-i18n="foot.h3">Соцмережі</h2>
+      <a href="#" data-demo>Instagram</a>
+      <a href="#" data-demo>Facebook</a>
+      <a href="#" data-demo>YouTube</a>
+      <a href="#" data-demo>Telegram</a>
+    </div>
+  </div>
+
+  <div class="shell foot__bar">
+    <p class="foot__disc" data-i18n="foot.disclaimer">VOLTARIA — вигадана компанія. Цей сайт створено як демонстраційний портфоліо-кейс: контакти не працюють, ціни та відгуки ілюстративні.</p>
+    <p class="foot__copy">© <span id="year">2026</span> VOLTARIA · <span data-i18n="foot.made">демо-проєкт</span></p>
+  </div>
+</footer>
+
+<!-- ============ DEMO MODAL ============ -->
+<div class="modal" id="modal" hidden>
+  <div class="modal__bd" data-close></div>
+  <div class="modal__box" role="dialog" aria-modal="true" aria-labelledby="mTitle" aria-describedby="mText">
+    <button type="button" class="modal__x" data-close data-i18n-attr="aria-label:a11y.close" aria-label="Закрити">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </button>
+    <div class="modal__ic" aria-hidden="true">
+      <svg viewBox="0 0 32 32"><path d="M17.8 2 6 18.2h7.4L12.6 30 26 13.2h-7.9L17.8 2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+    </div>
+    <h2 class="modal__t" id="mTitle" data-i18n="modal.title">Це демонстраційний сайт</h2>
+    <p class="modal__d" id="mText" data-i18n="modal.text">Компанії VOLTARIA не існує. Лендинг створено як портфоліо-кейс, тому телефон, пошта, соцмережі й форма заявки не працюють — жодні дані нікуди не надсилаються.</p>
+    <p class="modal__sub" data-i18n="modal.sub">Дякуємо за перегляд — це приклад роботи для портфоліо.</p>
+    <button type="button" class="btn btn--full" data-close data-i18n="modal.btn">Зрозуміло</button>
+  </div>
+</div>
+
+<script type="application/ld+json" id="ldBiz">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://yanisdigital.github.io/solar-station/#business",
+  "name": "VOLTARIA",
+  "description": "Проєктування, монтаж та обслуговування автономних сонячних станцій для приватних будинків у передмісті Києва.",
+  "disambiguatingDescription": "Fictional company. This website is a demonstration portfolio case study.",
+  "url": "https://yanisdigital.github.io/solar-station/",
+  "telephone": "+380440000000",
+  "email": "hello@voltaria.example",
+  "image": "https://yanisdigital.github.io/solar-station/assets/img/og-cover.jpg",
+  "priceRange": "€€€",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "вул. Прикладна, 1",
+    "addressLocality": "Ірпінь",
+    "addressRegion": "Київська область",
+    "postalCode": "08200",
+    "addressCountry": "UA"
+  },
+  "areaServed": [
+    { "@type": "City", "name": "Ірпінь" },
+    { "@type": "City", "name": "Буча" },
+    { "@type": "City", "name": "Вишгород" },
+    { "@type": "City", "name": "Обухів" },
+    { "@type": "City", "name": "Козин" },
+    { "@type": "AdministrativeArea", "name": "Київська область" }
+  ],
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+    "opens": "09:00", "closes": "19:00"
+  }],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Сонячні станції під ключ",
+    "itemListElement": [
+      { "@type": "Offer", "name": "Старт · 5 кВт", "price": "6400", "priceCurrency": "EUR", "itemOffered": { "@type": "Service", "name": "Монтаж сонячної станції 5 кВт з накопичувачем" } },
+      { "@type": "Offer", "name": "Оптимум · 10 кВт", "price": "11900", "priceCurrency": "EUR", "itemOffered": { "@type": "Service", "name": "Монтаж сонячної станції 10 кВт з накопичувачем" } },
+      { "@type": "Offer", "name": "Автономія · 15+ кВт", "price": "18500", "priceCurrency": "EUR", "itemOffered": { "@type": "Service", "name": "Монтаж сонячної станції 15+ кВт з накопичувачем" } }
+    ]
+  }
+}
+</script>
+
+<script type="application/ld+json" id="ldFaq">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "А якщо тиждень стоїть хмарна погода?", "acceptedAnswer": { "@type": "Answer", "text": "Панелі працюють і в хмарну погоду — віддають приблизно 15–25 % пікової потужності. Для таких днів у кожному комплекті є накопичувач, який вирівнює провали генерації." } },
+    { "@type": "Question", "name": "Що відбувається взимку та під снігом?", "acceptedAnswer": { "@type": "Answer", "text": "Грудень і січень дають близько 25–30 % від літньої генерації, що закладено в розрахунок. Панелі монтуються під кутом 30–35°, тому сухий сніг сходить самостійно." } },
+    { "@type": "Question", "name": "За скільки станція окупиться?", "acceptedAnswer": { "@type": "Answer", "text": "За поточних тарифів окупність становить від 8 до 12 років залежно від споживання, оскільки комплект включає накопичувач. Порівняно з витратами на генератор і пальне станція виходить у плюс раніше." } },
+    { "@type": "Question", "name": "Чи можна продавати надлишок у мережу?", "acceptedAnswer": { "@type": "Answer", "text": "Так, гібридний інвертор це дозволяє, і ми готуємо документи для підключення. Пріоритет системи — спершу будинок і батарея, надлишок — потім." } },
+    { "@type": "Question", "name": "Станція працює, коли мережа знеструмлена?", "acceptedAnswer": { "@type": "Answer", "text": "Так. Гібридний інвертор з накопичувачем переходить в автономний режим за 20 мілісекунд, тому техніка в будинку не перезавантажується." } },
+    { "@type": "Question", "name": "Яке обслуговування потрібне?", "acceptedAnswer": { "@type": "Answer", "text": "Мийка панелей раз на рік і щорічна перевірка кріплень та зʼєднань. Стан системи видно дистанційно через моніторинг." } }
+  ]
+}
+</script>
+
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/parallax.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

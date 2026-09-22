@@ -1,0 +1,18 @@
+# Local tooling
+.claude/
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Build / deps (if the project ever grows one)
+node_modules/
+dist/
+.env
+.env.*
