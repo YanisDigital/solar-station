@@ -97,42 +97,6 @@ python -m http.server 5173
 
 ---
 
-## Деплой на Cloudflare Workers
-
-Сайт статичний, тому деплоїться як Workers static assets — код воркера
-відсутній. Запити до статики на безкоштовному тарифі не тарифікуються й не
-мають ліміту.
-
-**Налаштування в дашборді:** Workers & Pages → Create application → Import a
-repository → цей репозиторій.
-
-| Поле | Значення |
-|---|---|
-| Project name | `solar-station` (мусить збігатися з `name` у `wrangler.jsonc`) |
-| Build command | `rm -rf dist && mkdir dist && cp -r index.html robots.txt sitemap.xml site.webmanifest assets _headers dist/` |
-| Deploy command | `npx wrangler deploy` |
-
-Публікується **не корінь репозиторію, а `dist/`**. Це свідомо: так на CDN
-гарантовано не потрапляють `.git`, `README.md`, `LICENSE` і сам
-`wrangler.jsonc`. Перевірити локально тим самим рядком, що й на сервері:
-
-```bash
-rm -rf dist && mkdir dist && cp -r index.html robots.txt sitemap.xml site.webmanifest assets _headers dist/
-```
-
-### Навіщо `_headers`
-
-`_headers` — єдине джерело політики безпеки сайту: `index.html` не містить
-дубля в `<meta http-equiv="Content-Security-Policy">`, тому вони не можуть
-розійтися. GitHub Pages, на якому раніше жив демо-деплой, узагалі не вміє
-віддавати власні заголовки відповіді — політику доводилось дублювати в
-`<meta>`, а такий варіант не може виразити `frame-ancestors` чи
-`X-Frame-Options`, тобто не захищає від clickjacking. На Cloudflare це
-закрито: `frame-ancestors 'none'` + `X-Frame-Options: DENY` у справжніх HTTP-
-заголовках. Плюс довгий кеш для шрифтів замість дефолтних 10 хвилин.
-
----
-
 ## SEO
 
 - `title` і `description` під запит «сонячні панелі під ключ Київська область»,
