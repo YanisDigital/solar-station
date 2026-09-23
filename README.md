@@ -91,6 +91,43 @@ python -m http.server 5173
 
 ---
 
+## Деплой на Cloudflare Workers
+
+Сайт статичний, тому деплоїться як Workers static assets — код воркера
+відсутній. Запити до статики на безкоштовному тарифі не тарифікуються й не
+мають ліміту.
+
+**Налаштування в дашборді:** Workers & Pages → Create application → Import a
+repository → цей репозиторій.
+
+| Поле | Значення |
+|---|---|
+| Project name | `solar-station` (мусить збігатися з `name` у `wrangler.jsonc`) |
+| Build command | `rm -rf dist && mkdir dist && cp -r index.html robots.txt sitemap.xml site.webmanifest assets _headers dist/` |
+| Deploy command | `npx wrangler deploy` |
+
+Публікується **не корінь репозиторію, а `dist/`**. Це свідомо: так на CDN
+гарантовано не потрапляють `.git`, `README.md`, `LICENSE` і сам
+`wrangler.jsonc`. Перевірити локально тим самим рядком, що й на сервері:
+
+```bash
+rm -rf dist && mkdir dist && cp -r index.html robots.txt sitemap.xml site.webmanifest assets _headers dist/
+```
+
+### Навіщо `_headers`
+
+Cloudflare, на відміну від GitHub Pages, вміє віддавати власні заголовки
+відповіді. Тому саме тут — і тільки тут — закривається те, чого meta-політика
+не може: `frame-ancestors 'none'` та `X-Frame-Options: DENY`, тобто захист від
+clickjacking. Плюс довгий кеш для шрифтів замість дефолтних 10 хвилин.
+
+`<meta http-equiv="Content-Security-Policy">` в `index.html` поки лишається —
+він потрібен, доки сайт паралельно віддається з GitHub Pages, який заголовків
+не надсилає. Коли GitHub Pages буде вимкнено, meta можна прибрати, щоб
+політика мала одне джерело правди — `_headers`.
+
+---
+
 ## SEO
 
 - `title` і `description` під запит «сонячні панелі під ключ Київська область»,

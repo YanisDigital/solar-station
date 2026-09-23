@@ -13,6 +13,7 @@ Desktop.ini
 
 # Build / deps (if the project ever grows one)
 node_modules/
+# Cloudflare build output
 dist/
 .env
 .env.*

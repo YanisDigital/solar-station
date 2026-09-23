@@ -1,0 +1,27 @@
+# Cloudflare Workers static assets — настоящие HTTP-заголовки.
+# GitHub Pages так не умеет, поэтому на нём политика живёт в <meta> внутри
+# index.html. Здесь доступно то, чего meta-вариант не может в принципе:
+# frame-ancestors и X-Frame-Options, то есть защита от clickjacking.
+
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'sha256-/x7W7R75k8Roq0WaVRQX9blP4OufE5xbAdzklGxsgpw='; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'; frame-ancestors 'none'; upgrade-insecure-requests
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=(), usb=()
+
+# Шрифты неизменны: имя файла привязано к конкретной версии от Google Fonts.
+/assets/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Фото могут меняться, но редко.
+/assets/img/*
+  Cache-Control: public, max-age=2592000
+
+# CSS и JS правятся вместе с деплоями, а хеша в имени файла нет —
+# поэтому сутки, а не год.
+/assets/css/*
+  Cache-Control: public, max-age=86400
+
+/assets/js/*
+  Cache-Control: public, max-age=86400
