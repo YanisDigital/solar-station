@@ -4,45 +4,31 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
-<!-- GitHub Pages cannot send response headers, so the policy ships in markup.
-     Everything is same-origin: the only exceptions are the two data: URIs used
-     as CSS backgrounds and the one inline bootstrap script, allowed by hash
-     rather than 'unsafe-inline'. form-action 'none' is deliberate — the lead
-     form is a demo and must never submit anywhere, with or without scripting.
-     Note: frame-ancestors is ignored in a meta policy, and Pages cannot send
-     X-Frame-Options, so clickjacking cannot be blocked on this host. -->
-<meta http-equiv="Content-Security-Policy" content="
-  default-src 'self';
-  script-src 'self' 'sha256-/x7W7R75k8Roq0WaVRQX9blP4OufE5xbAdzklGxsgpw=';
-  style-src 'self';
-  img-src 'self' data:;
-  font-src 'self';
-  connect-src 'none';
-  form-action 'none';
-  base-uri 'none';
-  object-src 'none';
-  upgrade-insecure-requests">
-<meta name="referrer" content="strict-origin-when-cross-origin">
+<!-- Security policy (CSP, X-Frame-Options, Referrer-Policy, ...) ships as
+     real HTTP response headers from Cloudflare — see /_headers. No meta
+     duplicate here: two copies would drift, and Cloudflare's version is
+     strictly stronger anyway (frame-ancestors + X-Frame-Options, which a
+     <meta> tag cannot express at all). -->
 
 <title data-i18n="meta.title">VOLTARIA — сонячні станції під ключ для приватних будинків у Київській області</title>
 <meta name="description" data-i18n-attr="content:meta.desc" content="Проєктування, монтаж та обслуговування автономних сонячних станцій для приватних будинків у передмісті Києва. Повна енергонезалежність за 14 днів. Гарантія 25 років.">
 <meta name="theme-color" content="#0B0E12">
-<link rel="canonical" href="https://yanisdigital.github.io/solar-station/">
-<link rel="alternate" hreflang="uk" href="https://yanisdigital.github.io/solar-station/">
-<link rel="alternate" hreflang="en" href="https://yanisdigital.github.io/solar-station/?lang=en">
-<link rel="alternate" hreflang="x-default" href="https://yanisdigital.github.io/solar-station/">
+<link rel="canonical" href="https://solar-station.yanis-ua.workers.dev/">
+<link rel="alternate" hreflang="uk" href="https://solar-station.yanis-ua.workers.dev/">
+<link rel="alternate" hreflang="en" href="https://solar-station.yanis-ua.workers.dev/?lang=en">
+<link rel="alternate" hreflang="x-default" href="https://solar-station.yanis-ua.workers.dev/">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="VOLTARIA">
 <meta property="og:locale" content="uk_UA" data-i18n-attr="content:meta.ogLocale">
-<meta property="og:url" content="https://yanisdigital.github.io/solar-station/">
+<meta property="og:url" content="https://solar-station.yanis-ua.workers.dev/">
 <meta property="og:title" data-i18n-attr="content:meta.ogTitle" content="VOLTARIA — світло, яке ніхто не вимкне">
 <meta property="og:description" data-i18n-attr="content:meta.desc" content="Автономні сонячні станції під ключ для приватних будинків у передмісті Києва.">
-<meta property="og:image" content="https://yanisdigital.github.io/solar-station/assets/img/og-cover.jpg">
+<meta property="og:image" content="https://solar-station.yanis-ua.workers.dev/assets/img/og-cover.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" data-i18n-attr="content:meta.ogTitle" content="VOLTARIA — світло, яке ніхто не вимкне">
 <meta name="twitter:description" data-i18n-attr="content:meta.desc" content="Автономні сонячні станції під ключ для приватних будинків у передмісті Києва.">
-<meta name="twitter:image" content="https://yanisdigital.github.io/solar-station/assets/img/og-cover.jpg">
+<meta name="twitter:image" content="https://solar-station.yanis-ua.workers.dev/assets/img/og-cover.jpg">
 
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="manifest" href="site.webmanifest">
@@ -670,14 +656,14 @@
 {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "@id": "https://yanisdigital.github.io/solar-station/#business",
+  "@id": "https://solar-station.yanis-ua.workers.dev/#business",
   "name": "VOLTARIA",
   "description": "Проєктування, монтаж та обслуговування автономних сонячних станцій для приватних будинків у передмісті Києва.",
   "disambiguatingDescription": "Fictional company. This website is a demonstration portfolio case study.",
-  "url": "https://yanisdigital.github.io/solar-station/",
+  "url": "https://solar-station.yanis-ua.workers.dev/",
   "telephone": "+380440000000",
   "email": "hello@voltaria.example",
-  "image": "https://yanisdigital.github.io/solar-station/assets/img/og-cover.jpg",
+  "image": "https://solar-station.yanis-ua.workers.dev/assets/img/og-cover.jpg",
   "priceRange": "€€€",
   "address": {
     "@type": "PostalAddress",
