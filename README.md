@@ -97,6 +97,33 @@ python -m http.server 5173
 
 ---
 
+## Деплой на Cloudflare Workers
+
+Сайт живе на [solar-station.yanis-ua.workers.dev](https://solar-station.yanis-ua.workers.dev/)
+як Workers static assets — код воркера відсутній, публікуються лише файли.
+Запити до статики на безкоштовному тарифі не тарифікуються й не мають ліміту.
+
+Wrangler публікує не корінь репозиторію, а **`dist/`** — папку, яку збирає
+build command перед деплоєм:
+
+```bash
+rm -rf dist && mkdir dist && cp -r index.html robots.txt sitemap.xml site.webmanifest assets _headers dist/
+```
+
+Це свідомо: так на CDN гарантовано не потрапляють `.git`, `README.md`,
+`LICENSE` і сам `wrangler.jsonc` — лише те, що дійсно повинен бачити
+відвідувач. `wrangler.jsonc` задає ім'я проєкту (мусить збігатися з тим, що
+на дашборді Cloudflare) і шлях до `dist/`.
+
+**Навіщо `_headers`:** це єдине джерело політики безпеки сайту — CSP,
+`X-Frame-Options`, `Referrer-Policy` та довгий кеш для шрифтів. GitHub Pages,
+де раніше жив демо-деплой, узагалі не вміє віддавати власні заголовки
+відповіді, тому доводилось дублювати політику в `<meta>` — а такий варіант
+не може виразити `frame-ancestors`, тобто не захищає від clickjacking. На
+Cloudflare цього обмеження немає.
+
+---
+
 ## SEO
 
 - `title` і `description` під запит «сонячні панелі під ключ Київська область»,
@@ -141,7 +168,7 @@ python -m http.server 5173
 Жодних персональних даних, аналітики, трекерів чи cookie на сайті немає.
 
 Політика безпеки живе в справжніх HTTP-заголовках (`_headers`, деталі — у
-розділі «Деплой на Cloudflare Workers» вище), а не в `<meta>`. Усе, крім двох
+розділі «Деплой на Cloudflare Workers»), а не в `<meta>`. Усе, крім двох
 `data:`-фонів у CSS і одного вбудованого скрипта (дозволений за хешем, а не
 через `unsafe-inline`), обмежене власним походженням. `form-action 'none'`
 стоїть свідомо: демо-форма не повинна відправлятися нікуди навіть без JS.
@@ -162,7 +189,7 @@ python -m http.server 5173
 ## Перед використанням як шаблону
 
 1. Замініть домен у `canonical`, `hreflang`, `og:url`, `sitemap.xml`,
-   `robots.txt` і JSON-LD — зараз там адреса демо-деплою на GitHub Pages.
+   `robots.txt` і JSON-LD — зараз там адреса демо-деплою на Cloudflare.
 2. Підставте справжні телефон, пошту й адресу — у футері, в `tel:`-посиланні
    та в JSON-LD.
 3. Приберіть блок-дисклеймер у футері, плашки «відгуки вигадані» / «цифри
