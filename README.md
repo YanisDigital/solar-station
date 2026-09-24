@@ -65,6 +65,9 @@ assets/img/cases/          фото об'єктів
 assets/css/fonts.css       @font-face на локальні шрифти
 assets/fonts/              Unbounded, Manrope, JetBrains Mono (woff2)
 robots.txt · sitemap.xml · site.webmanifest
+wrangler.jsonc             конфіг Cloudflare Workers (ім'я проєкту, шлях до dist/)
+_headers                   CSP та інші HTTP-заголовки для Cloudflare
+LICENSE                    MIT — поширюється на код, не на фото з Unsplash
 ```
 
 ### Як додати переклад рядка
